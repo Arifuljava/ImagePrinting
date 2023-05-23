@@ -40,6 +40,9 @@
                             <constraint firstItem="5rk-6r-Ndi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uws-OY-aub"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="5rk-6r-Ndi" id="4L5-9G-N6U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
