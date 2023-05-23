@@ -184,9 +184,17 @@ class ViewController: UIViewController ,  CBCentralManagerDelegate, CBPeripheral
                                   }
                                   peripheral.writeValue(Convert, for: characteristic, type: .withResponse)
                                   */
+                               
+                                 let mainstring = "\n\n\n\n\n\n\n"
+                                 guard  let subliu = mainstring.data(using: .utf8)
+                                 else{
+                                     return
+                                 }
                                  
                                  
-                                 let newImage = convertImageToDifferentColorScale(with: UIImage(named: "bluetooth")!, imageStyle: "CIPhotoEffectNoir")
+                                 
+                                 
+                                 let newImage = convertImageToDifferentColorScale(with: UIImage(named: "small")!, imageStyle: "CIPhotoEffectNoir")
                                        //self.dismiss(animated: true)
                                  convertImageToBitmap(image: newImage)
                                  guard let  imagedatamy = UIImage(named: "small")else{
@@ -209,6 +217,7 @@ class ViewController: UIViewController ,  CBCentralManagerDelegate, CBPeripheral
                                  print(imageData)
                                                           
                                  peripheral.writeValue(imageData, for: characteristic, type: .withoutResponse)
+                                 peripheral.writeValue(subliu, for: characteristic, type: .withoutResponse)
                                  break
                              }
                          }
