@@ -16,6 +16,7 @@
 		25A4F03B2A1C67F900A9D103 /* ImagePrintingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4F03A2A1C67F900A9D103 /* ImagePrintingTests.swift */; };
 		25A4F0452A1C67F900A9D103 /* ImagePrintingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4F0442A1C67F900A9D103 /* ImagePrintingUITests.swift */; };
 		25A4F0472A1C67F900A9D103 /* ImagePrintingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4F0462A1C67F900A9D103 /* ImagePrintingUITestsLaunchTests.swift */; };
+		25A4F0542A1C7F9000A9D103 /* ImageScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4F0532A1C7F9000A9D103 /* ImageScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		25A4F0402A1C67F900A9D103 /* ImagePrintingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagePrintingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25A4F0442A1C67F900A9D103 /* ImagePrintingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePrintingUITests.swift; sourceTree = "<group>"; };
 		25A4F0462A1C67F900A9D103 /* ImagePrintingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePrintingUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		25A4F0532A1C7F9000A9D103 /* ImageScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				25A4F02C2A1C67F900A9D103 /* Assets.xcassets */,
 				25A4F02E2A1C67F900A9D103 /* LaunchScreen.storyboard */,
 				25A4F0312A1C67F900A9D103 /* Info.plist */,
+				25A4F0532A1C7F9000A9D103 /* ImageScreenView.swift */,
 			);
 			path = ImagePrinting;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			files = (
 				25A4F0282A1C67F800A9D103 /* ViewController.swift in Sources */,
 				25A4F0242A1C67F800A9D103 /* AppDelegate.swift in Sources */,
+				25A4F0542A1C7F9000A9D103 /* ImageScreenView.swift in Sources */,
 				25A4F0262A1C67F800A9D103 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
