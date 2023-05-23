@@ -216,8 +216,16 @@ class ViewController: UIViewController ,  CBCentralManagerDelegate, CBPeripheral
                                                                 return }
                                  print(imageData)
                                                           
-                                 peripheral.writeValue(imageData, for: characteristic, type: .withoutResponse)
-                                 peripheral.writeValue(subliu, for: characteristic, type: .withoutResponse)
+                                // peripheral.writeValue(imageData, for: characteristic, type: .withoutResponse)
+                                // peripheral.writeValue(subliu, for: characteristic, type: .withoutResponse)
+                                 let valrues: [UInt8] = [1, 2, 3, 4]
+                                //second
+                                 let values: [UInt8] = convertImageToBitmap11(image: image) ?? valrues
+                                 let data = Data(values)                                // guard let data =
+                                /// var theData : [UInt8] = convertImageToBitmap11(image: image) ?? imageData
+                                   // peripheral.writeValue(data, for: characteristic, type: .withResponse)
+                    
+                                     peripheral.writeValue(data, for: characteristic, type: .withResponse)
                                  break
                              }
                          }
@@ -230,6 +238,38 @@ class ViewController: UIViewController ,  CBCentralManagerDelegate, CBPeripheral
            
          
       }
+    
+    
+    func convertImageToBitmap11(image: UIImage) -> [UInt8]? {
+        guard let cgImage = image.cgImage else { return nil }
+        
+        let width = cgImage.width
+        let height = cgImage.height
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bytesPerPixel = 4
+        let bytesPerRow = bytesPerPixel * width
+        let bitsPerComponent = 8
+        let bitmapInfo = CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue
+        
+        var bitmapData = [UInt8](repeating: 0, count: width * height * bytesPerPixel)
+        
+        guard let context = CGContext(data: &bitmapData,
+                                      width: width,
+                                      height: height,
+                                      bitsPerComponent: bitsPerComponent,
+                                      bytesPerRow: bytesPerRow,
+                                      space: colorSpace,
+                                      bitmapInfo: bitmapInfo) else {
+            return nil
+        }
+        
+        let rect = CGRect(x: 0, y: 0, width: width, height: height)
+        context.draw(cgImage, in: rect)
+        
+        return bitmapData
+    }
+    
     func convertImageToBitmap(image: UIImage) -> Data? {
             print("get")
             guard let cgImage = image.cgImage else { return nil }
