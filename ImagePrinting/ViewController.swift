@@ -224,8 +224,12 @@ class ViewController: UIViewController ,  CBCentralManagerDelegate, CBPeripheral
                                  let data = Data(values)                                // guard let data =
                                 /// var theData : [UInt8] = convertImageToBitmap11(image: image) ?? imageData
                                    // peripheral.writeValue(data, for: characteristic, type: .withResponse)
-                    
-                                     peripheral.writeValue(data, for: characteristic, type: .withResponse)
+                                 guard let imageDat11a = convertImageToBitmap22(image:
+                                                                                image) else {
+                                                                 return }
+                                 let datata = Data(imageDat11a)
+                                 peripheral.writeValue(datata, for: characteristic, type: .withoutResponse)
+                                    // peripheral.writeValue(data, for: characteristic, type: .withResponse)
                                  break
                              }
                          }
@@ -238,7 +242,27 @@ class ViewController: UIViewController ,  CBCentralManagerDelegate, CBPeripheral
            
          
       }
-    
+    func convertImageToBitmap22(image: UIImage) -> Data? {
+        guard let cgImage = image.cgImage else {
+            return nil
+        }
+        
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
+        let context = CGContext(data: nil, width: cgImage.width, height: cgImage.height, bitsPerComponent: 8, bytesPerRow: 0, space: CGColorSpaceCreateDeviceGray(), bitmapInfo: bitmapInfo.rawValue)
+        
+        guard let bitmapContext = context else {
+            return nil
+        }
+        
+        let rect = CGRect(x: 0, y: 0, width: cgImage.width, height: cgImage.height)
+        bitmapContext.draw(cgImage, in: rect)
+        
+        guard let data = bitmapContext.data else {
+            return nil
+        }
+        
+        return Data(bytes: data, count: cgImage.width * cgImage.height)
+    }
     
     func convertImageToBitmap11(image: UIImage) -> [UInt8]? {
         guard let cgImage = image.cgImage else { return nil }
